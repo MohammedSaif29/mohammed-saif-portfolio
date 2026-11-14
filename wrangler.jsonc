@@ -1,0 +1,16 @@
+// Tells Cloudflare how to host this portfolio: it serves the files in this folder as they are,
+// at mohammedsaif.dev. The workers.dev address and preview links stay off, because they carry
+// the Cloudflare account's name.
+{
+  "name": "mohammed-saif-portfolio",
+  "compatibility_date": "2026-11-01",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    { "pattern": "mohammedsaif.dev", "custom_domain": true },
+    { "pattern": "www.mohammedsaif.dev", "custom_domain": true }
+  ],
+  "assets": {
+    "directory": "."
+  }
+}
