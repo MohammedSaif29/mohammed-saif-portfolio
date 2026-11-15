@@ -26,7 +26,7 @@
   --ink:#1B2632;--ink-2:#223041;--ink-3:#2C3B4D;
   --text:#EEE9DF;--soft:#C9C1B1;--dim:#8F969C;
   --accent:#FFB162;
-  --c1:#FFB162;--c2:#C9C1B1;--c3:#E0835A;--c4:#A35139;
+  --c1:#FFB162;--c2:#C9C1B1;--c3:#E0835A;--c4:#A35139;--c5:#F59A5C;
   --g1:#FFB162;--g2:#F59A5C;--g3:#E0835A;--g4:#C96A48;
   --live:#5BE3A0;--warn:#FF8A6B;
   /* Derived from the palette above */
@@ -204,6 +204,18 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0}
 [data-step="0"] .tier:nth-child(1),[data-step="1"] .tier:nth-child(2){border-color:var(--c);background:color-mix(in srgb,var(--c) 22%,transparent);transform:translateY(-5px)}
 [data-step="0"] .tier:nth-child(2) small,[data-step="1"] .tier:nth-child(1) small{visibility:hidden}
 
+/* AidConnect art */
+.give{display:flex;flex-direction:column;gap:14px;padding:20px 18px;border:1px solid var(--line-2);border-radius:16px;background:rgba(0,0,0,.45)}
+.give header{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:16px;font-weight:600}
+.give em{font-style:normal;font-size:12px;font-weight:500;padding:4px 10px;border-radius:12px;border:1px solid var(--line-2);color:var(--dim);transition:color .3s,border-color .3s,background .3s}
+.bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:var(--p,22%);border-radius:4px;background:var(--c);transition:width .9s var(--out)}
+.give small{font-size:13px;color:var(--dim)}
+[data-step="1"] .bar i{--p:58%}[data-step="2"] .bar i{--p:100%}
+[data-step="1"] .give em,[data-step="2"] .give em{color:var(--text);border-color:var(--c);background:color-mix(in srgb,var(--c) 22%,transparent)}
+.steps span{transition:border-color .3s,color .3s}
+[data-step="0"] .steps span:nth-child(1),[data-step="1"] .steps span:nth-child(-n+3),[data-step="2"] .steps span{border-color:var(--c);color:var(--text)}
+
 /* Skills */
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin:clamp(22px,3vw,34px) 0 18px}
 .filters button{min-height:44px;padding:0 18px;border-radius:22px;border:1px solid var(--line-2);font-size:15px;font-weight:500;color:var(--soft);cursor:pointer;transition:background .25s,color .25s}
@@ -346,7 +358,7 @@ footer a{color:var(--soft)}
       <section id="work" class="rule pad" data-section>
         <div class="work-head rv">
           <h2 class="h2">Selected <span class="gt">work</span></h2>
-          <p>Four projects, from the MacBook notch to cloud storage.</p>
+          <p>Five projects, from the MacBook notch to cloud storage.</p>
         </div>
         <div class="stack">
           <article class="card" style="--c:var(--c1)">
@@ -420,6 +432,31 @@ footer a{color:var(--soft)}
           </article>
 
           <article class="card" style="--c:var(--c4)">
+            <div class="art" data-steps="3" data-step="0" aria-hidden="true">
+              <div class="path steps"><span>Request</span><s></s><span>Verified</span><s></s><span>Donations</span></div>
+              <div class="give">
+                <header>Aid request <em>Admin verified</em></header>
+                <div class="bar"><i></i></div>
+                <small>Every donation tracked as it arrives</small>
+              </div>
+            </div>
+            <div class="info">
+              <p class="eyebrow kind"><i></i>Web platform</p>
+              <h3>AidConnect</h3>
+              <ul class="stackline"><li>Node.js</li><li>Express</li><li>SQLite</li><li>JWT</li></ul>
+              <ul class="points">
+                <li>A donation platform connecting people in need with donors.</li>
+                <li>Aid requests are verified by an admin, and every donation is tracked.</li>
+                <li>Separate donor and admin views, with JWT sign-in and bcrypt-hashed passwords.</li>
+              </ul>
+              <div class="links">
+                <a href="https://mohammedsaif29.github.io/aidconnect/" target="_blank" rel="noopener">Live demo <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
+                <a href="https://github.com/MohammedSaif29/aidconnect" target="_blank" rel="noopener">Source <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" style="--c:var(--c5)">
             <div class="art" data-steps="2" data-step="0" aria-hidden="true">
               <div class="path"><span>Workload</span><s></s><span>Benchmarks</span><s></s><span>Advice</span></div>
               <div class="tiers">
@@ -436,6 +473,7 @@ footer a{color:var(--soft)}
                 <li>Backed by real Azure benchmarks.</li>
               </ul>
               <div class="links">
+                <a href="https://azure-tiers.mohammedsaif.dev" target="_blank" rel="noopener">Live site <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
                 <a href="https://github.com/MohammedSaif29/azure-storage-tier-analyzer" target="_blank" rel="noopener">Source <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></a>
               </div>
             </div>
@@ -455,9 +493,9 @@ footer a{color:var(--soft)}
         </div>
         <ul class="chips rv" id="chips">
           <li data-g="lang">C</li><li data-g="lang">Java</li><li data-g="lang">Python</li><li data-g="lang mac">Swift</li>
-          <li data-g="web">Spring Boot</li><li data-g="web">Hibernate</li><li data-g="web">React</li><li data-g="web">Node.js</li><li data-g="web">FastAPI</li>
-          <li data-g="mac">SwiftUI</li><li data-g="mac">AppKit</li><li data-g="mac">AVFoundation</li>
-          <li data-g="tool">MySQL</li><li data-g="tool">Git</li><li data-g="tool">GitHub</li><li data-g="tool">Maven</li><li data-g="tool">Vercel</li><li data-g="tool">Railway</li><li data-g="tool">Microsoft Azure</li><li data-g="tool">pytest</li><li data-g="tool">REST APIs</li><li data-g="tool">HTML</li><li data-g="tool">CSS</li>
+          <li data-g="web">Spring Boot</li><li data-g="web">Hibernate</li><li data-g="web">React</li><li data-g="web">Node.js</li><li data-g="web">Express</li><li data-g="web">FastAPI</li>
+          <li data-g="mac">SwiftUI</li><li data-g="mac">AppKit</li><li data-g="mac">AVFoundation</li><li data-g="mac">Apple Intelligence</li>
+          <li data-g="tool">MySQL</li><li data-g="tool">SQLite</li><li data-g="tool">Git</li><li data-g="tool">GitHub</li><li data-g="tool">Maven</li><li data-g="tool">Vercel</li><li data-g="tool">Railway</li><li data-g="tool">Microsoft Azure</li><li data-g="tool">pytest</li><li data-g="tool">REST APIs</li><li data-g="tool">HTML</li><li data-g="tool">CSS</li>
           <li data-g="core">Data Structures and Algorithms</li><li data-g="core">DAA</li><li data-g="core">OOP</li><li data-g="core">DBMS</li><li data-g="core">Operating Systems</li><li data-g="core">Computer Networks</li>
         </ul>
       </section>
